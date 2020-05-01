@@ -1,0 +1,28 @@
+# OSX
+.DS_Store
+
+# IDE
+.idea
+
+# npm
+.npmrc
+node_modules
+yarn.lock
+package-lock.json
+
+# dev
+src
+babel.config.js
+prettier.config.js
+rollup.config.js
+LICENSE
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+
+#other
+.git
+.gitignore
+.editorconfig
+.eslintrc.json
+.travis.yml
+release.sh

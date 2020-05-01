@@ -1,0 +1,77 @@
+{
+  "name": "@useful/storage",
+  "version": "1.0.1",
+  "description": "Simple and powerful storage library.",
+  "main": "lib/index.min.js",
+  "module": "lib/index.esm.js",
+  "browser": "lib/index.min.js",
+  "types": "lib/types/index.d.ts",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "rm -fr ./lib && npm run type-check && npm run build:types && npm run build:umd && npm run size",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "cross-env BABEL_ENV=build babel src --out-dir lib --extensions \".ts\"",
+    "build:umd": "rollup -c",
+    "lint": "./node_modules/.bin/eslint src/**/*.ts",
+    "prettier": "prettier --write \"README.md\"",
+    "size": "size-limit && gzip-size lib/index.min.js",
+    "pub": "sh release.sh"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "size-limit": [
+    {
+      "limit": "2 KB",
+      "path": "lib/index.min.js"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fe-useful-tools/useful-storage.git"
+  },
+  "keywords": [
+    "storage",
+    "localStorage",
+    "sessionStorage",
+    "html5"
+  ],
+  "author": "kingmui<muikinghk@yahoo.com.hk>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fe-useful-tools/useful-storage/issues"
+  },
+  "homepage": "https://github.com/fe-useful-tools/useful-storage#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.9.0",
+    "@size-limit/preset-small-lib": "^4.4.5",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "gzip-size-cli": "^3.0.0",
+    "lodash": "^4.17.15",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.0.5",
+    "rollup": "^2.7.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.6.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-typescript2": "^0.27.0",
+    "size-limit": "^4.4.5",
+    "typescript": "^3.8.3"
+  }
+}
