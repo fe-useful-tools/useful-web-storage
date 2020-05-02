@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+  <script src="../lib/index.min.js"></script>
+</head>
+<body>
+  <script>
+    const serialize = val => JSON.stringify(val);
+
+    const storage = usefulStorage.storage;
+    const session = usefulStorage.session;
+
+    storage.clear();
+
+    console.log('Except storage length is 0:', storage.length() === 0);
+
+    // Use native method storage
+    window.localStorage.setItem('numberZero', serialize(0));
+    window.localStorage.setItem('stringZero', serialize("0"));
+    window.localStorage.setItem('nativeTestArray', serialize(['n', 0, true]));
+    window.localStorage.setItem('nativeTestObject', serialize({ id: 1024, title: 'Hello World!' }));
+
+    // Compatible with natively stored values
+    console.log('number 0:', storage.get('numberZero'));
+    console.log('string 0:', storage.get('stringZero'));
+    console.log('nativeTestArray:', storage.get('nativeTestArray'));
+    console.log('nativeTestObject:', storage.get('nativeTestObject'));
+
+    console.log('Except storage length is 2:', storage.length() === 2);
+    console.log('Expect the second key to be stringZero:', storage.key(1) === 'stringZero');
+
+    storage.set('numberArray', [1, 2, 3, 4]);
+    console.log('numberArray:', storage.get('numberArray'));
+
+    // The value has expired
+    storage.set('numberArrayExpired', [1, 2, 3, 4], 0);
+    console.log('numberArrayExpired is expired, so it\'s null', storage.get('numberArrayExpired'));
+
+    console.log('has numberArray:', storage.has('numberArray'));
+    console.log('has numberArrayExpired:', storage.has('numberArrayExpired'));
+
+    storage.remove('numberArray');
+
+    console.log('numberArray is removed, so it\'s false:', storage.has('numberArray'));
+
+    storage.set('userInfo', {name: 'kingmui', age: 18}, storage.permanent);
+    storage.set('booleanTest', true);
+
+    console.log('userInfo:', storage.get('userInfo'));
+    console.log('booleanTest is true:', storage.get('booleanTest'));
+
+    storage.set('testExpiredData', 'testExpiredData', 0);
+
+    // storage.clearExpiredStorage();
+
+    console.log('getAll', storage.getAll());
+
+    storage.forEach((key, val) => {
+      console.log('storage key:', key);
+      console.log('storage val:', val);
+    });
+
+  </script>
+</body>
+</html>

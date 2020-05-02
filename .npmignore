@@ -12,6 +12,7 @@ package-lock.json
 
 # dev
 src
+test
 babel.config.js
 prettier.config.js
 rollup.config.js

@@ -3,6 +3,8 @@ const { toString } = class2type;
 
 export const serialize = (val: any) => JSON.stringify(val);
 
+export const noop = () => {};
+
 export const deserialize = (val: string | null) => {
   if (val === null) return null;
 

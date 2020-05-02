@@ -13,6 +13,10 @@
 # useful-storage
 Simple and powerful storage library.
 
+- :zap: Lightweight, less than 1kb
+- :clock12: Support setting expiration time, the default expiration time is zero on the next day
+- :package: No package dependencies
+
 ## :package: Install
 
 ```shell
@@ -28,7 +32,10 @@ $ npm install --save @useful/storage
 ```html
 <script src="lib/useful-storage/index.min.js"></script>
 <script>
-  console.log('usefulStorage', usefulStorage);
+  const storage = usefulStorage.storage;
+  storage.clearExpiredStorage();
+  storage.set('name', '@useful/storage', storage.permanent);
+  storage.get('name');
 </script>
 ```
 
@@ -37,15 +44,15 @@ $ npm install --save @useful/storage
 ```typescript
  import { storage, session } from '@useful/storage';
 
- // localStorage
- storage.set(key,val)
+// localStorage
+storage.set('name', '@useful/storage', storage.permanent);
 
- storage.get(key, def)
+storage.get('name');
 
- // sessionStorage
- session.set(key, val)
+// sessionStorage
+session.set('name', '@useful/storage');
 
- session.get(key, def)
+session.get('name');
 ```
 
 ## :bulb: API
@@ -54,7 +61,7 @@ $ npm install --save @useful/storage
 
 When passed a key name and value, will add that key to the storage, or update that key's value if it already exists.
 
-When `exp` is a number, it indicates how many days will expire. The default expiration time is **zero on the next day**.
+When `exp` is a number, it indicates how many days will expire. The default expiration time is **zero on the next day**. If you want permanent storage, please manually pass in [`storage.permanent`](#permanent-date).
 
 ### `get: <T>(key: string) => T | null`
 
@@ -72,6 +79,10 @@ When passed a key name, will remove that key from the storage.
 
 When invoked, will empty all keys out of the storage.
 
+### `clearExpiredStorage: () => void;`
+
+Only clear expired storage.
+
 ### `getAll: () => Record<string, any> | undefined`
 
 Get all the storages.
@@ -87,6 +98,10 @@ Returns an integer representing the number of data items stored in the Storage o
 ### `key: (n: number) => string | null`
 
 Get the name of the nth key in the storage.
+
+### `permanent: Date`
+
+Permanently store constant.
 
 ## :rocket: Download
 

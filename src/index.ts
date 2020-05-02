@@ -1,13 +1,15 @@
-import { setStorage, getStorage } from './utils';
+import { setStorage, getStorage, noop } from './utils';
 
 export interface IUsefulStorage {
   disabled: boolean;
   storage?: Storage | null;
+  permanent: Date;
   set: (key: string, val: any, exp?: number | Date) => any;
   get: <T>(key: string) => T | null;
   has: (key: string) => boolean;
   remove: (key: string) => void;
   clear: () => void;
+  clearExpiredStorage: () => void;
   getAll: () => Record<string, any> | undefined;
   forEach: (callback: (key: string, val: any) => void) => void;
   length: () => number;
@@ -28,6 +30,10 @@ const session: IUsefulStorage = {
 
 const commonAPI: IUsefulStorage = {
   disabled: false,
+  /**
+   * Permanently store constant
+   */
+  permanent: new Date('9999-01-01'),
   /**
    * When passed a key name and value, will add that key to the storage,
    * or update that key's value if it already exists
@@ -96,6 +102,14 @@ const commonAPI: IUsefulStorage = {
   clear() {
     if (this.disabled || !this.storage) return;
     this.storage.clear();
+  },
+
+  /**
+   * Only clear expired storage
+   */
+  clearExpiredStorage() {
+    if (this.disabled || !this.storage) return;
+    this.forEach(noop);
   },
 
   /**
