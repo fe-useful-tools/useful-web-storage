@@ -47,7 +47,7 @@ const commonAPI: IUsefulWebStorage = {
     if (val === null || this.disabled || !this.storage) return;
     const expiresDate = new Date();
 
-    if (typeof exp === 'number') {
+    if (typeof exp === 'number' && !Number.isNaN(exp)) {
       expiresDate.setTime(expiresDate.getTime() + exp * 24 * 60 * 60 * 1000);
     } else if (!exp || !(exp instanceof Date)) {
       const hours = expiresDate.getHours();
@@ -95,7 +95,7 @@ const commonAPI: IUsefulWebStorage = {
    * @param exp
    */
   touch(key, exp) {
-    if (this.disabled || !this.storage) return null;
+    if (this.disabled || !this.storage) return;
     const data = this.get(key);
     if (data) {
       this.set(key, data, exp);
