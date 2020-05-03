@@ -21,12 +21,12 @@ export interface IUsefulWebStorage {
 const isServer = typeof window === 'undefined';
 
 // @ts-ignore
-const storage: IUsefulWebStorage = {
+export const storage: IUsefulWebStorage = {
   storage: !isServer ? window.localStorage : null
 };
 
 // @ts-ignore
-const session: IUsefulWebStorage = {
+export const session: IUsefulWebStorage = {
   storage: !isServer ? window.sessionStorage : null
 };
 

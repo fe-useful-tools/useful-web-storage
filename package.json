@@ -1,6 +1,6 @@
 {
   "name": "useful-web-storage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple and powerful storage library.",
   "main": "lib/index.min.js",
   "module": "lib/index.esm.js",
