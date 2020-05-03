@@ -40,7 +40,7 @@
         2,
         {
           "ignore": [
-            "usefulStorage"
+            "usefulWebStorage"
           ]
         }
       ],

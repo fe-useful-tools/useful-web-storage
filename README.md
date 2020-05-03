@@ -1,16 +1,16 @@
 <p align="center">
-  <h1 align="center"> USEFUL-STORAGE </h1>
+  <h1 align="center"> USEFUL-WEB-STORAGE </h1>
 </p>
 <p align="center">
-  <img alt="license" src="https://img.shields.io/npm/l/useful-storage?style=flat-square">
-  <img alt="releases" src="https://badgen.net/github/releases/fe-useful-tools/useful-storage?style=flat-square">
-  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/fe-useful-tools/useful-storage?style=flat-square&colorB=51C838">
-  <img alt="downloads" src="https://img.shields.io/npm/dt/@useful/storage?style=flat-square">
-  <img alt="pkg dependents" src="https://badgen.net/github/dependents-pkg/fe-useful-tools/useful-storage?style=flat-square">
-  <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/useful-storage?style=flat-square">
+  <img alt="license" src="https://img.shields.io/npm/l/useful-web-storage?style=flat-square">
+  <img alt="releases" src="https://badgen.net/github/releases/fe-useful-tools/useful-web-storage?style=flat-square">
+  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/fe-useful-tools/useful-web-storage?style=flat-square&colorB=51C838">
+  <img alt="downloads" src="https://img.shields.io/npm/dt/useful-web-storage?style=flat-square">
+  <img alt="pkg dependents" src="https://badgen.net/github/dependents-pkg/fe-useful-tools/useful-web-storage?style=flat-square">
+  <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/useful-web-storage?style=flat-square">
 </p>
 
-# useful-storage
+# useful-web-storage
 Simple and powerful storage library.
 
 - :zap: Lightweight, less than 1kb
@@ -20,9 +20,9 @@ Simple and powerful storage library.
 ## :package: Install
 
 ```shell
-$ yarn add @useful/storage
+$ yarn add useful-web-storage
 # or
-$ npm install --save @useful/storage
+$ npm install --save useful-web-storage
 ```
 
 ## :pencil: Usage
@@ -30,27 +30,35 @@ $ npm install --save @useful/storage
 ### Browser
 
 ```html
-<script src="lib/useful-storage/index.min.js"></script>
+<script src="lib/useful-web-storage/index.min.js"></script>
 <script>
-  const storage = usefulStorage.storage;
+  const storage = usefulWebStorage.storage;
   storage.clearExpiredStorage();
-  storage.set('name', '@useful/storage', storage.permanent);
+  storage.set('name', 'useful-web-storage', storage.permanent);
   storage.get('name');
 </script>
+```
+
+### Use with RequireJS
+
+```javascript
+define(['useful-web-storage'], function(usefulWebStorage) {
+  usefulWebStorage.storage.set('name', 'useful-web-storage');
+});
 ```
 
 ### Typescript
 
 ```typescript
- import { storage, session } from '@useful/storage';
+ import { storage, session } from 'useful-web-storage';
 
 // localStorage
-storage.set('name', '@useful/storage', storage.permanent);
+storage.set('name', 'useful-web-storage', storage.permanent);
 
 storage.get('name');
 
 // sessionStorage
-session.set('name', '@useful/storage');
+session.set('name', 'useful-web-storage');
 
 session.get('name');
 ```
@@ -105,8 +113,8 @@ Permanently store constant.
 
 ## :rocket: Download
 
-Download the latest version of useful-storage at https://github.com/fe-useful-tools/useful-storage/releases
+Download the latest version of useful-web-storage at https://github.com/fe-useful-tools/useful-web-storage/releases
 
 ## License
 
-useful-storage is licensed under a [MIT License](https://github.com/fe-useful-tools/useful-storage/blob/master/LICENSE).
+useful-web-storage is licensed under a [MIT License](https://github.com/fe-useful-tools/useful-web-storage/blob/master/LICENSE).

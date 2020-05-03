@@ -6,7 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import camelCase from 'lodash/camelCase';
 import pkg from './package.json';
 
-const packageName = 'useful-storage';
+const packageName = 'useful-web-storage';
 
 const banner = '/*!\n'
           + ` * ${pkg.name} v${pkg.version}\n`

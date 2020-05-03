@@ -11,7 +11,7 @@ export const deserialize = (val: string | null) => {
   try {
     return JSON.parse(val);
   } catch (e) {
-    // not using @useful/storage
+    // not using useful-web-storage
     return val || null;
   }
 };
@@ -54,7 +54,7 @@ export const getStorage = <T>(params: {
 
   const storageData = deserialize(storage.getItem(key));
 
-  // Data is stored using `@useful/storage`
+  // Data is stored using `useful-web-storage`
   if (isPlainObject(storageData) && storageData.usefulStorage && storageData.expires) {
     if (new Date().getTime() - storageData.expires >= 0) {
       storage.removeItem(key);

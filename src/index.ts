@@ -1,6 +1,6 @@
 import { setStorage, getStorage, noop } from './utils';
 
-export interface IUsefulStorage {
+export interface IUsefulWebStorage {
   disabled: boolean;
   storage?: Storage | null;
   permanent: Date;
@@ -19,16 +19,16 @@ export interface IUsefulStorage {
 const isServer = typeof window === 'undefined';
 
 // @ts-ignore
-const storage: IUsefulStorage = {
+const storage: IUsefulWebStorage = {
   storage: !isServer ? window.localStorage : null
 };
 
 // @ts-ignore
-const session: IUsefulStorage = {
+const session: IUsefulWebStorage = {
   storage: !isServer ? window.sessionStorage : null
 };
 
-const commonAPI: IUsefulStorage = {
+const commonAPI: IUsefulWebStorage = {
   disabled: false,
   /**
    * Permanently store constant

@@ -1,5 +1,5 @@
 {
-  "name": "@useful/storage",
+  "name": "useful-web-storage",
   "version": "1.0.0",
   "description": "Simple and powerful storage library.",
   "main": "lib/index.min.js",
@@ -29,7 +29,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fe-useful-tools/useful-storage.git"
+    "url": "git+https://github.com/fe-useful-tools/useful-web-storage.git"
   },
   "keywords": [
     "storage",
@@ -40,9 +40,9 @@
   "author": "kingmui<muikinghk@yahoo.com.hk>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fe-useful-tools/useful-storage/issues"
+    "url": "https://github.com/fe-useful-tools/useful-web-storage/issues"
   },
-  "homepage": "https://github.com/fe-useful-tools/useful-storage#readme",
+  "homepage": "https://github.com/fe-useful-tools/useful-web-storage#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
