@@ -50,7 +50,7 @@ define(['useful-web-storage'], function(usefulWebStorage) {
 ### Typescript
 
 ```typescript
- import { storage, session } from 'useful-web-storage';
+import { storage, session } from 'useful-web-storage';
 
 // localStorage
 storage.set('name', 'useful-web-storage', storage.permanent);
@@ -79,6 +79,10 @@ When the obtained value does not expire, return the value.
 
 Determine storage has the key.
 
+### `touch: (key: string, exp: number | Date) => void`
+
+Set a new timeout for the stored value (not expired) based on the current time.
+
 ### `remove: (key: string) => void`
 
 When passed a key name, will remove that key from the storage.
@@ -98,6 +102,10 @@ Get all the storages.
 ### `forEach: (callback: (key: string, val: any) => void) => void`
 
 forEach the storages and call the callback function with each storage.
+
+### `isSupported: () => boolean`
+
+Check if the browser supports localstorage. If not supported, nothing will be done.
 
 ### `length: () => number`
 

@@ -7,11 +7,13 @@ export interface IUsefulWebStorage {
   set: (key: string, val: any, exp?: number | Date) => any;
   get: <T>(key: string) => T | null;
   has: (key: string) => boolean;
+  touch: (key: string, exp: number | Date) => void;
   remove: (key: string) => void;
   clear: () => void;
   clearExpiredStorage: () => void;
   getAll: () => Record<string, any> | undefined;
   forEach: (callback: (key: string, val: any) => void) => void;
+  isSupported: () => boolean;
   length: () => number;
   key: (n: number) => string | null;
 }
@@ -88,6 +90,19 @@ const commonAPI: IUsefulWebStorage = {
   },
 
   /**
+   * Set a new timeout for the stored value (not expired) based on the current time
+   * @param key
+   * @param exp
+   */
+  touch(key, exp) {
+    if (this.disabled || !this.storage) return null;
+    const data = this.get(key);
+    if (data) {
+      this.set(key, data, exp);
+    }
+  },
+
+  /**
    * When passed a key name, will remove that key from the storage
    * @param key
    */
@@ -134,6 +149,13 @@ const commonAPI: IUsefulWebStorage = {
         callback(key, this.get(key));
       }
     }
+  },
+
+  /**
+   * Check if the browser supports localstorage. If not supported, nothing will be done.
+   */
+  isSupported() {
+    return !this.disabled;
   },
 
   /**
