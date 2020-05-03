@@ -1,5 +1,3 @@
-English | [简体中文](./docs/zh-cn/README.zh-CN.md) | [正體中文](./docs/zh-tw/README.zh-TW.md)
-
 <p align="center">
   <h1 align="center"> USEFUL-WEB-STORAGE </h1>
 </p>
@@ -13,18 +11,18 @@ English | [简体中文](./docs/zh-cn/README.zh-CN.md) | [正體中文](./docs/z
 </p>
 
 # useful-web-storage
-Simple and powerful storage library.
+簡單且强大的本地存儲庫
 
-## :sparkles: Features
+## :sparkles: 特性
 
-- :zap: Lightweight, only 1kb after minified and gzipped
-- :clock12: Support setting expiration time, the default expiration time is zero on the next day
-- 🛡 Written in TypeScript with predictable static types
-- :package: No package dependencies
+- :zap: 輕量，壓縮後僅1kb
+- :clock12: 支援設定過期時間，默認過期時間為次日零點
+- 🛡 使用 `TypeScript` 開發，提供完整的類型定義檔案
+- :package: 無第三方包依賴
 
-## :package: Installation
+## :package: 安裝
 
-Using npm or yarn
+使用 npm 或 yarn 安裝
 
 ```shell
 $ npm install --save useful-web-storage
@@ -34,11 +32,11 @@ $ npm install --save useful-web-storage
 $ yarn add useful-web-storage
 ```
 
-## :pencil: Usage
+## :pencil: 使用
 
-### Browser
+### 瀏覽器
 
-Add script tags in your browser and use the global variable `usefulWebStorage`.
+在瀏覽器中使用 `script` 標籤直接引入檔案，並使用全域變數 `usefulWebStorage`。
 
 ```html
 <script src="lib/useful-web-storage/index.min.js"></script>
@@ -50,7 +48,7 @@ Add script tags in your browser and use the global variable `usefulWebStorage`.
 </script>
 ```
 
-### Use with RequireJS
+### 在 RequireJS 中使用
 
 ```javascript
 define(['useful-web-storage'], function(usefulWebStorage) {
@@ -90,62 +88,62 @@ session.get<IUserInfo>('userInfo');
 
 ### `set: (key: string, val: any, exp?: number | Date) => any`
 
-When passed a key name and value, will add that key to the storage, or update that key's value if it already exists.
+當傳入 `key` 及 `value` 的值， 會在 `storage` 裡新增此 `key` 及 `value` 值，若 `key` 已存在，則會把值更新成傳入的 `value`。
 
-When `exp` is a number, it indicates how many days will expire. The default expiration time is **zero on the next day**. If you want permanent storage, please manually pass in [`storage.permanent`](#permanent-date).
+當傳入的 `exp` 為 `number` 類型時，表示多少天后將過期。默認過期時間為次日零點。如果你想要永久存儲，請手動傳入 [`storage.permanent`](#permanent-date)。
 
 ### `get: <T>(key: string) => T | null`
 
-When the obtained value does not expire, return the value. In the `TypeScript` project, you can also specify the type of the return value.
+當傳入一 `key` 值， 會返回 `storage` 裡此 `key` 值對應的 `value`（未超時）。在 `TypeScript` 項目中，你還可以顯示指定該返回值類型。
 
 ### `has: (key: string) => boolean`
 
-Determine storage has the key.
+檢測 `key` 對應的值（未過期）是否存在。
 
 ### `touch: (key: string, exp: number | Date) => void`
 
-Set a new timeout for the stored value (not expired) based on the current time.
+為指定的 `key` （未過期）以當前時間為基準設定新的超時時間。
 
 ### `remove: (key: string) => void`
 
-When passed a key name, will remove that key from the storage.
+从 `storage` 裡删除指定 `key` 的值。
 
 ### `clear: () => void`
 
-When invoked, will empty all keys out of the storage.
+清空本地存儲。
 
 ### `clearExpiredStorage: () => void;`
 
-Only clear expired storage.
+相比 `clear`，該方法僅會清除**已過期**的值。
 
 ### `getAll: () => Record<string, any> | undefined`
 
-Get all the storages.
+獲取所有本地存儲的值。
 
 ### `forEach: (callback: (key: string, val: any) => void) => void`
 
-forEach the storages and call the callback function with each storage.
+遍歷 `storage` 裡的值，為每個值調用一次 `callback`。
 
 ### `isSupported: () => boolean`
 
-Check if the browser supports localstorage. If not supported, nothing will be done.
+檢測瀏覽器是否支援本地存儲。如果不支援，將不會執行任何操作。
 
 ### `length: () => number`
 
-Returns an integer representing the number of data items stored in the Storage object.
+返回一數字，代表儲存在 `Storage` 中的物件的數量。
 
 ### `key: (n: number) => string | null`
 
-Get the name of the nth key in the storage.
+當傳入一數字 `n`, 會返回 `storage` 裡第 `n` 個值的 `key` 值。
 
 ### `permanent: Date`
 
-Permanently store constant.
+永久存儲常數。
 
-## :rocket: Download
+## :rocket: 下載
 
-Download the latest version of useful-web-storage at https://github.com/fe-useful-tools/useful-web-storage/releases
+你可以在以下連結中下載最新版本的 useful-web-storage https://github.com/fe-useful-tools/useful-web-storage/releases
 
-## License
+## 開源協定
 
-useful-web-storage is licensed under a [MIT License](https://github.com/fe-useful-tools/useful-web-storage/blob/master/LICENSE).
+useful-web-storage 遵循 [MIT 開源協定](https://github.com/fe-useful-tools/useful-web-storage/blob/master/LICENSE).
