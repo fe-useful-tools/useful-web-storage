@@ -97,7 +97,7 @@ const commonAPI: IUsefulWebStorage = {
   touch(key, exp) {
     if (this.disabled || !this.storage) return;
     const data = this.get(key);
-    if (data) {
+    if (data !== null) {
       this.set(key, data, exp);
     }
   },
