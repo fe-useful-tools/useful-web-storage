@@ -26,4 +26,5 @@ CONTRIBUTING.md
 .editorconfig
 .eslintrc.json
 .travis.yml
+.all-contributorsrc
 release.sh
