@@ -1,5 +1,4 @@
-const class2type = {};
-const { toString } = class2type;
+const { toString } = Object.prototype;
 
 export const serialize = (val: any) => JSON.stringify(val);
 

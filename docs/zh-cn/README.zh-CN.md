@@ -32,6 +32,12 @@ $ npm install --save useful-web-storage
 $ yarn add useful-web-storage
 ```
 
+umd
+
+```html
+<script src="https://unpkg.com/useful-web-storage@${version}/lib/index.min.js"></script>
+```
+
 ## :pencil: 使用
 
 ### 浏览器
@@ -39,7 +45,7 @@ $ yarn add useful-web-storage
 在浏览器中使用 `script` 标签直接引入文件，并使用全局变量 `usefulWebStorage`。
 
 ```html
-<script src="lib/useful-web-storage/index.min.js"></script>
+<script src="https://unpkg.com/useful-web-storage@1.0.2/lib/index.min.js"></script>
 <script>
   const storage = usefulWebStorage.storage;
   storage.clearExpiredStorage();
